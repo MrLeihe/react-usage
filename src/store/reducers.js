@@ -1,27 +1,28 @@
 import { Count } from './constants'
+import initialState from './initialState'
 
-const initState = { count: 0 }
-
-export function plusAction(dispatch) {
-  return dispatch({
+export function plusAction() {
+  return {
     type: Count.COUNT_PLUS,
-  })
+  }
 }
 
-export function minusAction(dispatch) {
-  return dispatch({
+export function minusAction() {
+  return {
     type: Count.COUNT_MINUS,
-  })
+  }
 }
 
-export function countReducer(state = initState, action) {
+export function countReducer(state = initialState, action) {
+  console.log('countReducer===', state, action)
   switch (action.type) {
     case Count.COUNT_PLUS:
+      console.log('COUNT_PLUS===')
       return {
         ...state,
         count: state.count + 1,
       }
-    case Count.COUNT_PLUS:
+    case Count.COUNT_MINUS:
       return {
         ...state,
         count: state.count - 1,
@@ -31,7 +32,7 @@ export function countReducer(state = initState, action) {
   }
 }
 
-export function todoReducer(state = initState, action) {
+export function todoReducer(state = initialState, action) {
   switch (action.type) {
     default:
       return state

@@ -1,37 +1,45 @@
-import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { plusAction, minusAction } from './store/reducers'
 
-const Main = (props) => {
-  const { count, plus, minus } = props
+class Main extends React.Component {
 
-  const handlePlus = () => {
-    plus()
+  constructor(props) {
+    super(props)
+    console.log('props===', props)
   }
 
-  const handleMinus = () => {
-    minus()
+   handlePlus = () => {
+     this.props.plus()
   }
 
-  return (
-    <div>
-      <button onClick={handlePlus}>plus</button>
-      <div>{count}</div>
-      <button onClick={handleMinus}>minus</button>
-    </div>
-  )
+   handleMinus = () => {
+     this.props.minus()
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.handlePlus}>plus</button>
+        <div>{this.props.count}</div>
+        <button onClick={this.handleMinus}>minus</button>
+      </div>
+    )
+  }
+  
 }
 
 const mapStateToProps = (state) => {
+  console.log('mapStateToProps===', state)
   return {
-    count: state.count,
+    count: state.countReducer.count,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    plus: plusAction(dispatch),
-    minus: minusAction(dispatch),
+    plus: () => dispatch(plusAction()),
+    minus: () => dispatch(minusAction()),
   }
 }
 

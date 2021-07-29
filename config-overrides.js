@@ -8,9 +8,9 @@ module.exports = {
     // addWebpackAlias({
     //   ['react']: path.resolve('./node_modules/react'),
     // })
-    babelInclude([
-      path.resolve(__dirname, 'src'),
-      fs.realpathSync('./node_modules/@yxcx/fe-design'),
-    ])
+    // babelInclude([
+    //   path.resolve(__dirname, 'src'),
+    //   fs.realpathSync('./node_modules/@yxcx/fe-design'),
+    // ])
   ),
 }
