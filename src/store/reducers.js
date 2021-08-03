@@ -14,10 +14,8 @@ export function minusAction() {
 }
 
 export function countReducer(state = initialState, action) {
-  console.log('countReducer===', state, action)
   switch (action.type) {
     case Count.COUNT_PLUS:
-      console.log('COUNT_PLUS===')
       return {
         ...state,
         count: state.count + 1,

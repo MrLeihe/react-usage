@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import throttle from '../lib/throttle'
 
-export const useResizeHook = () => {
+export function useResizeHook() {
   console.log('use custom hook')
   const [event, setEvent] = useState({
     width: window.innerWidth,
@@ -26,4 +26,22 @@ export const useResizeHook = () => {
   }, [])
 
   return event
+}
+
+export function useAsyncMemo(factory, deps, initial) {
+  const [val, setVal] = useState(initial)
+
+  useEffect(() => {
+    let cancel = false
+    const promise = factory()
+    promise.then((res) => {
+      if (!cancel) {
+        setVal(res)
+      }
+    })
+    return () => {
+      cancel = true
+    }
+  }, deps)
+  return val
 }

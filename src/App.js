@@ -1,24 +1,31 @@
 import React from 'react'
-import Main from './Main'
-import Message from './Message'
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import Home from './views/Home'
+import Message from './views/Message'
 import { Provider } from 'react-redux'
 import store from './store'
 import './App.css'
 
 const App = () => {
-  const [show, setShow] = React.useState(true)
-
-  const handleClick = () => {
-    setShow(!show)
-  }
-
   return (
     <Provider store={store}>
-      <div className="App">
-        {show && <Message />}
-        <button onClick={handleClick}>显示隐藏main</button>
-        {show && <Main />}
-      </div>
+      <Router>
+        <div className="App">
+          <div className="nav">
+            <Link to="/">Home</Link>
+            <Link to="/message">Message</Link>
+          </div>
+
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/message">
+              <Message />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </Provider>
   )
 }

@@ -5,9 +5,9 @@ const fs = require('fs')
 module.exports = {
   webpack: override(
     //添加别名
-    // addWebpackAlias({
-    //   ['react']: path.resolve('./node_modules/react'),
-    // })
+    addWebpackAlias({
+      ['@']: path.resolve(__dirname, 'src'),
+    })
     // babelInclude([
     //   path.resolve(__dirname, 'src'),
     //   fs.realpathSync('./node_modules/@yxcx/fe-design'),
