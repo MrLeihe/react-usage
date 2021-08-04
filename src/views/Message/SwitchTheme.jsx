@@ -1,10 +1,8 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 
 function SwitchTheme({ onThemeChange }) {
-  return useMemo(() => {
-    console.log('SwitchTheme render....')
-    return <button onClick={onThemeChange}>切换主题</button>
-  }, [onThemeChange])
+  console.log('SwitchTheme render....')
+  return <button onClick={onThemeChange}>切换主题</button>
 }
 
-export default SwitchTheme
+export default React.memo(SwitchTheme)
