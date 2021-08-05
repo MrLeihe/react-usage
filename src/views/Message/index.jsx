@@ -3,6 +3,7 @@ import ThemeContext, { themes } from '@/context'
 import MessageContext from './context'
 import ThemeButtom from '@/components/ThemeButton'
 import SwitchTheme from './SwitchTheme'
+import Pure from './pure'
 
 function Message() {
   const [theme, setTheme] = useState(themes.dark)
@@ -39,6 +40,7 @@ function Message() {
       <ThemeContext.Provider value={theme}>
         <ThemeButtom />
       </ThemeContext.Provider>
+      <Pure />
     </MessageContext.Provider>
   )
 }
